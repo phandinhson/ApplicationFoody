@@ -50,9 +50,9 @@ public class ListViewAdapter extends BaseAdapter {
         final ViewHolder holder;
         if (view == null) {
             holder = new ViewHolder();
-            view = inflater.inflate(R.layout.list_item, null);
+            view = inflater.inflate(R.layout.city_item, null);
             // Locate the TextViews in listview_item.xml
-            holder.name = (TextView) view.findViewById(R.id.name);
+            holder.name = (TextView) view.findViewById(R.id.name_city);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -62,16 +62,19 @@ public class ListViewAdapter extends BaseAdapter {
         return view;
     }
 
-    // Filter Class
-    public void filter(String charText) {
+
+    //filter
+    public void filter(String charText){
         charText = charText.toLowerCase(Locale.getDefault());
         provinceNamesList.clear();
-        if (charText.length() == 0) {
+        if (charText.length()==0){
             provinceNamesList.addAll(arraylist);
-        } else {
-            for (ProvinceName wp : arraylist) {
-                if (wp.getProvinceName().toLowerCase(Locale.getDefault()).contains(charText)) {
-                    provinceNamesList.add(wp);
+        }
+        else {
+            for (ProvinceName provinceName : arraylist){
+                if (provinceName.getProvinceName().toLowerCase(Locale.getDefault())
+                        .contains(charText)){
+                    provinceNamesList.add(provinceName);
                 }
             }
         }

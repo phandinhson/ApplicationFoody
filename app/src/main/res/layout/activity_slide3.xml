@@ -91,7 +91,9 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:textStyle="bold"
+        android:textColor="@drawable/text_link_selector"
+        android:id="@+id/txtThucDon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -102,7 +104,9 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/txtAddWifi"
+        android:textStyle="bold"
+        android:textColor="@drawable/text_link_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -113,7 +117,9 @@
         app:layout_constraintTop_toBottomOf="@+id/myMap" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:textStyle="bold"
+        android:textColor="@drawable/text_link_selector"
+        android:id="@+id/txtRemPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="110dp"

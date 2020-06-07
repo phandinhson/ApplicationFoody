@@ -5,10 +5,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -18,33 +21,34 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends Activity implements SearchView.OnQueryTextListener {
-    private ListView lv;
+
+    Button btnCity;
     SearchView editsearch;
     ListViewAdapter adapter;
-    private ArrayList<ProvinceName> arrayList= new ArrayList<ProvinceName>();
-    String[] provinceNameList;
+
+
     List<Dish> lstDish;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        provinceNameList= new String[]{"Đồng Nai","Hồ Chí Minh","Vũng Tàu","Bình Dương","Hà Nội","Đà Nẵng"};
-        // Locate the ListView in listview_main.xml
-        lv =  findViewById(R.id.listview);
-        for (int i = 0; i < provinceNameList.length; i++) {
-            ProvinceName provinceNames = new ProvinceName(provinceNameList[i]);
-            // Binds all strings into an array
-            arrayList.add(provinceNames);
-        }
-        // Pass results to ListViewAdapter Class
-        adapter = new ListViewAdapter(this, arrayList);
-        // Binds the Adapter to the ListView
-        lv.setAdapter(adapter);
+
         // Locate the EditText in listview_main.xml
         editsearch = findViewById(R.id.search);
+        btnCity=findViewById(R.id.btn_City);
         editsearch.setOnQueryTextListener(this);
+        btnCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CityActivity.class);
+
+                startActivity(intent);
+            }
+        });
+
 
 
         lstDish=new ArrayList<>();
@@ -58,9 +62,10 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 
 
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
-        RecycleViewAdapter myAdapter = new RecycleViewAdapter(this,lstDish);
+        RecycleViewAdapterMain myAdapter = new RecycleViewAdapterMain(this,lstDish);
         myrv.setLayoutManager(new GridLayoutManager(this,2));
         myrv.setAdapter(myAdapter);
+
     }
 
     @Override
